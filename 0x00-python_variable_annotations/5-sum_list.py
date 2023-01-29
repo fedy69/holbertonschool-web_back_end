@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""  returns their sum as a float """
+""" returns their sum as a float """
 from typing import List
 
 

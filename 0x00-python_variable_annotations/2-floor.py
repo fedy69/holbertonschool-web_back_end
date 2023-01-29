@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""  floor """
+""" floor """
 
 
 def floor(n: float) -> int:

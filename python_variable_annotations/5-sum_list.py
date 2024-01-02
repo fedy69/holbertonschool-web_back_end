@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
-"""_summary_
-sums a lsit of floats
-"""
+"""Annotations - list of floats"""
 
-
-from math import fsum
 from typing import List
 
 
 def sum_list(input_list: List[float]) -> float:
-    '''return fsum(input_list)'''
-    return fsum(input_list)
+    """Returns the sum of the list of floats"""
+    return sum(input_list)

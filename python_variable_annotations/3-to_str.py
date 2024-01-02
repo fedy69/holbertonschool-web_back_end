@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-"""_summary_
-stringify a float n
-"""
+"""Annotations - to string"""
 
 
 def to_str(n: float) -> str:
-    '''return str(n)'''
+    """Returns the string representation of the float"""
     return str(n)

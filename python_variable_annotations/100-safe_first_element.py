@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
-"""_summary_
-return firs t element of a list
-"""
-from typing import Union, Any, Sequence
+""" Annotations - first element of a sequence """
 
+from typing import Any, List, Optional
 
-def safe_first_element(lst: Sequence[Any]) -> Union[Any, None]:
-    '''return lst[0]'''
-    if lst:
-        return lst[0]
-    else:
-        return None
+def safe_first_element(lst: List[Any]) -> Optional[Any]:
+  """
+  Returns the first element of a list, or None if the list is empty.
+
+  Args:
+    lst: The list to check.
+
+  Returns:
+    The first element of the list, or None if the list is empty.
+  """
+
+  if lst:
+    return lst[0]
+  else:
+    return None

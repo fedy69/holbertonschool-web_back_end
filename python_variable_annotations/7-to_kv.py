@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-"""_summary_
-	returns an annotated tuple
-"""
+""" Complex types - string and int/float to tuple """
 
 from typing import Union, Tuple
 
 
 def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
-	'''returns a tuple with str ad float'''
-	return (k, v**2)
+    """ Returns a tuple """
+    return (k, v * v)

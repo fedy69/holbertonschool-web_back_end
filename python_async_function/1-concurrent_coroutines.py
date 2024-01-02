@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
-'''
-import wait_random from previous module
-'''
+""" Async task 1 """
 
-from typing import List
 
 import asyncio
+import random
+from typing import List
 
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, max_delay: int) -> List[float]:
-    '''execute max_delay n times'''
-    itr = [wait_random(max_delay) for x in range(n)]
-    d = []
-    for i in asyncio.as_completed(itr):
-        r = await i
-        d.append(r)
-    return(d)
+async def wait_n(n: int = 0, max_delay: int = 10) -> List[float]:
+    """Async routine that spawns wait_random n times"""
+    list_delays: List[float] = []
+    for i in range(n):
+        delay = await wait_random(max_delay)
+        list_delays.append(delay)
+
+    return sorted(list_delays)

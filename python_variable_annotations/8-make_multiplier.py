@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-"""_summary_
-returns a function that multiplies a float by multiplier.
-"""
-from operator import mul
+""" Complex types - functions """
+
 from typing import Callable
 
 
 def make_multiplier(multiplier: float) -> Callable[[float], float]:
-    '''return callable object'''
-    def f(n: float) -> float:
+    """ Returns a function that multiplies a float by multiplier """
+    def multiply_by_multiplier(n: float) -> float:
+        """ Multiplies a float by multiplier """
         return n * multiplier
-    return f
+    return multiply_by_multiplier

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-'''
-await gather for parallel exec
-'''
+"""Async parallel comprehension"""
+
+
 import asyncio
 import time
 
@@ -9,8 +9,11 @@ async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
 async def measure_runtime() -> float:
-    '''measure async performance'''
-    st = time.perf_counter()
-    coros = [async_comprehension() for i in range(4)]
-    await asyncio.gather(*coros)
-    return time.perf_counter() - st
+    """execute async_comprehension 4 times"""
+    start = time.perf_counter()
+    await asyncio.gather(async_comprehension(),
+                         async_comprehension(),
+                         async_comprehension(),
+                         async_comprehension())
+    end = time.perf_counter() - start
+    return end

@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
-"""_summary_
-sums a list of ints and floats
-"""
+"""Annotaions list complex types"""
+
+from typing import List, Union
 
 
-from typing import Union, List
-from math import fsum
-
-
-def sum_mixed_list(mxd_lst: List[Union[int, float]]) -> float:
-    '''return fsum(mxd_lst)'''
-    return fsum(mxd_lst)
+def sum_mixed_list(mxd_list: List[Union[int, float]]) -> float:
+    """Returns the sum of mixed list of float and int"""
+    return sum(mxd_list)

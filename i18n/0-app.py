@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-"""basic flask app"""
-
+"""app.py"""
 from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def index():
-    """index page"""
-    return render_template('index.html')
+def root():
+    """root function"""
+    return render_template('0-index.html')
 
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run()

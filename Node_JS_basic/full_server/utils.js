@@ -1,26 +1,17 @@
 const fs = require('fs');
 
-function countStudents(path) {
+function readDatabase(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
-        reject(Error('Cannot load the database'));
+        reject(Error(err));
         return;
       }
-      const response = [];
-      let msg;
-
       const content = data.toString().split('\n');
 
       let students = content.filter((item) => item);
 
       students = students.map((item) => item.split(','));
-
-      const studetns_number = students.length ? students.length - 1 : 0;
-      msg = `Number of students: ${studetns_number}`;
-      console.log(msg);
-
-      response.push(msg);
 
       const fields = {};
       for (const i in students) {
@@ -33,17 +24,11 @@ function countStudents(path) {
 
       delete fields.field;
 
-      for (const key of Object.keys(fields)) {
-        msg = `Number of students in ${key}: ${fields[key].length
-          }. List: ${fields[key].join(', ')}`;
+      resolve(fields);
 
-        console.log(msg);
-
-        response.push(msg);
-      }
-      resolve(response);
+      //   return fields;
     });
   });
 }
 
-module.exports = countStudents;
+export default readDatabase;

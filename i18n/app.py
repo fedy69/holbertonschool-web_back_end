@@ -2,6 +2,8 @@
 """app.py"""
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
+import pytz
+import datetime
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -28,7 +30,7 @@ app.config.from_object(Config)
 @app.route('/')
 def root():
     """app.py"""
-    return render_template("6-index.html")
+    return render_template("index.html")
 
 
 @babel.localeselector
@@ -62,6 +64,31 @@ def get_user():
 def before_request():
     """before_request"""
     g.user = get_user()
+    utcNow = pytz.utc.localize(datetime.datetime.utcnow())
+    local_time_now = utcNow.astimezone(pytz.timezone(get_timezone()))
+
+
+@babel.timezoneselector
+def get_timezone():
+    """get_timezone"""
+    localTimezone = request.args.get('timezone')
+    if localTimezone:
+        if localTimezone in pytz.all_timezones:
+            return localTimezone
+        else:
+            raise pytz.exceptions.UnknownTimeZoneError
+    try:
+        userId = request.args.get('login_as')
+        user = users[int(userId)]
+        localTimezone = user['timezone']
+    except Exception:
+        localTimezone = None
+    if localTimezone:
+        if localTimezone in pytz.all_timezones:
+            return localTimezone
+        else:
+            raise pytz.exceptions.UnknownTimeZoneError
+    return app.config['BABEL_DEFAULT_TIMEZONE']
 
 
 if __name__ == "__main__":
